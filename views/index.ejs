@@ -1,0 +1,44 @@
+<!-- views/pages/index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../views/partials/head %>
+</head>
+<body>
+    <main>
+      <h3>URL Abstraction Layer</h3>
+      <h4>User Stories</h4>
+      <ul>
+        <li>Get an Image URLS alt text and page urls for a set of images relating to a given search string</li>
+        <li>I can paginate through the responsies by adding a ?offset=2 parameter to the URL</li>
+        <li>I can get a list of the most recently submitted search strings</li>
+      </ul>
+    </main>
+
+    <section>
+      <div class="api-guide">
+        <h4>How to use</h4>
+        <p>Enter values for query parameters <code>/api/?query=YOUR_VALUE&page=YOUR_PAGE</code></p>
+        <code>http://localhost:3000/api/?query=monster&page=1</code>
+      </div>
+    </section>
+
+    <section>
+      <div class="past-searches">
+        <h4>Latest Searches</h4>
+        <% if (queries) { %>
+          <ul>
+            <% queries.forEach(function (e) { %>
+              <li><%= e.query %></li>
+            <% }); %>
+          </ul>
+        <% } %>
+      </div>
+    </section>
+    <footer>
+        <% include ../views/partials/footer %>
+    </footer>
+
+</body>
+</html>
